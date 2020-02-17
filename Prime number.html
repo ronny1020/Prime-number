@@ -19,8 +19,16 @@
         background-color: red;
     }
     
+    body {
+        background-color: aliceblue;
+    }
+    
     form label {
         width: 10%;
+    }
+    
+    table {
+        background-color: white;
     }
     
     table tr td {
@@ -31,7 +39,7 @@
 
 <body>
 
-    <form class='my-5 mx-auto container'>
+    <form class='my-5 mx-auto container card p-5'>
 
         <br>
         <div class="form-group"><label class="">START:</label>
@@ -45,13 +53,11 @@
 
         <input type="button" id="btn" onclick="table_prime()" value="RUN" class="btn btn-primary mt-3">
     </form>
-    <hr>
-    <table id="primetable" style="display: table;" class='table-bordered container'></table>
+
+    <table id="primetable" style="display: table;" class='table-bordered container bg-white'></table>
 
     <script>
         body = document.body;
-
-
 
 
 
