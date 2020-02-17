@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+
+</head>
+<!-- find out "Prime number" -->
+<style>
+    td.prime {
+        background-color: red;
+    }
+    
+    form label {
+        width: 10%;
+    }
+    
+    table tr td {
+        height: 3rem;
+        text-align: center;
+    }
+</style>
+
+<body>
+
+    <form class='my-5 mx-auto container'>
+
+        <br>
+        <div class="form-group"><label class="">START:</label>
+            <input type="text" id="START" value="1" class="form-control"></div>
+
+        <div class="form-group"><label>END:</label>
+            <input type="text" id="END" value="100" class="form-control"></div>
+
+        <div class="form-group"><label>COL:</label>
+            <input type="text" id="COL" value="10" class="form-control"></div>
+
+        <input type="button" id="btn" onclick="table_prime()" value="RUN" class="btn btn-primary mt-3">
+    </form>
+    <hr>
+    <table id="primetable" style="display: table;" class='table-bordered container'></table>
+
+    <script>
+        body = document.body;
+
+
+
+
+
+        function table_prime() {
+            START = Number(document.getElementById("START").value)
+            END = Number(document.getElementById("END").value)
+            COL = Number(document.getElementById("COL").value)
+
+            console.log(START)
+            console.log(END)
+            console.log(COL)
+
+            total = END - START + 1
+            body.removeChild(primetable)
+
+            table = document.createElement('table');
+            // table = primetable;
+            body.appendChild(table);
+            table.setAttribute('id', 'primetable')
+            table.setAttribute('class', 'table-bordered container')
+
+            // table.innerHTML = test
+            // body.appendChild(table);
+            // body.CreateAppendTo('table')
+            for (i = 0; i < Math.floor(total / COL) + 1; i++) {
+                tr = document.createElement('tr');
+                table.appendChild(tr);
+                console.log("check here");
+                for (j = 0; j < COL; j++) {
+                    num = START + COL * i + j;
+                    if (num > END) {
+                        break
+                    } else {
+                        root = Math.floor(num ** 0.5)
+                        check = false;
+                        if (num == 1) {
+                            check = true
+                        } else {
+                            for (k = 2; k <= root; k++) {
+
+                                if (num % k == 0) {
+                                    check = true;
+                                    break
+                                }
+                            }
+                        }
+                        td = document.createElement('td')
+                        tr.appendChild(td)
+                        td.innerHTML = `${num}`
+                        if (!check) {
+                            td.setAttribute('class', 'prime')
+
+                        }
+
+
+                    }
+                }
+            }
+        }
+    </script>
+
+</body>
+
+</html>
