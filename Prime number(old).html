@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+
+</head>
+
+
+
+<script>
+    //設定開始結束數字及欄數
+    START = 1
+    END = 1000
+    COL = 8
+        //設定結束
+
+
+    total = END - START + 1
+
+
+    document.write(`<hr>`)
+    document.write(`<table class="container table table-bordered">`)
+    for (i = 0; i < Math.floor(total / COL) + 1; i++) {
+        document.write(`<tr>`)
+        for (j = 0; j < COL; j++) {
+            num = START + COL * i + j;
+            if (num > END) {
+                break
+            } else {
+                root = Math.floor(num ** 0.5)
+                check = false;
+                for (k = 2; k <= root; k++) {
+
+                    if (num % k == 0) {
+                        check = true;
+                        break
+                    }
+
+                }
+                if (!check) {
+                    document.write(`<td bgcolor=red>`)
+                    document.write(num)
+                    document.write(`</td>`)
+
+                } else {
+                    document.write(`<td>`)
+                    document.write(num)
+                    document.write(`</td>`)
+                }
+            }
+        }
+
+        document.write(`</tr>`)
+    }
+
+    document.write(`</table>`)
+</script>
+
+
+
+</html>
